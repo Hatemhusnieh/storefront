@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { loadCategory, handleCategory } from '../store/products';
-import { Button, Menu, MenuItem } from '@material-ui/core';
+import { Paper, Tabs, Tab } from '@material-ui/core';
+import './category.scss';
 
 function Categories(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [value, setValue] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   useEffect(() => {
     props.loadCategory();
@@ -22,7 +15,7 @@ function Categories(props) {
 
   const CategoryPick = (props) => {
     return (
-      <div>
+      <div className="category">
         <h2>{name}</h2>
         <p>{description}</p>
       </div>
@@ -34,28 +27,34 @@ function Categories(props) {
     setDescription(des);
   }
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Category
-      </Button>
+      <Paper square>
+        <Tabs
+          value={value}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={handleChange}
+          aria-label="disabled tabs example"
+        >
+          {props.categories.categoryList.map((elm) => {
+            return (
+              <Tab
+                label={elm.name}
+                onClick={() => {
+                  props.handleCategory(elm.name);
+                  handlePick(elm.name, elm.description);
+                }}
+              />
+            );
+          })}
+        </Tabs>
+      </Paper>
       {name && <CategoryPick />}
-      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-        {props.categories.categoryList.map((elm) => {
-          return (
-            <MenuItem
-              onClick={() => {
-                props.handleCategory(elm.name);
-                handleClose();
-                handlePick(elm.name, elm.description);
-              }}
-              key={elm.name}
-            >
-              {elm.name}
-            </MenuItem>
-          );
-        })}
-      </Menu>
     </div>
   );
 }
