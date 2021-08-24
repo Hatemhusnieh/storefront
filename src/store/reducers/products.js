@@ -1,27 +1,10 @@
-const initialState = {
-  categories: {
-    activeCategory: '',
-    categoryList: [],
-  },
-  products: [],
-};
+const initialState = [];
 
-const categoryList = [
-  {
-    id: 1,
-    name: 'food',
-    description: 'Delicious food for you to feast on',
-  },
-  {
-    id: 2,
-    name: 'games',
-    description: 'Games to waste your life on',
-  },
-];
 const productList = [
   {
     id: 1,
     name: 'burger',
+    description: 'Meaty and Cheesy',
     img: 'https://ribsandburgers.com/au/wp-content/uploads/2019/03/2-angus-bacon-and-cheese.jpg',
     category: 'food',
     inStock: 72,
@@ -30,6 +13,7 @@ const productList = [
   {
     id: 2,
     name: 'pizza',
+    description: 'The original Italian taste',
     img: 'https://www.vegrecipesofindia.com/wp-content/uploads/2020/11/pizza-recipe-2-500x500.jpg',
     category: 'food',
     inStock: 120,
@@ -38,6 +22,7 @@ const productList = [
   {
     id: 3,
     name: 'Witcher 3 Wild Hunt',
+    description: '2015 Game of the Year',
     img: 'https://image.api.playstation.com/vulcan/img/rnd/202009/2913/TQKAd8U6hnIFQIIcz6qnFh8C.png?w=440',
     category: 'games',
     inStock: 90,
@@ -46,6 +31,7 @@ const productList = [
   {
     id: 4,
     name: "Assassin's Creed Black Flag",
+    description: "Best Assassin's Creed Game",
     img: 'https://cdn-products.eneba.com/resized-products/vqv03fmtmnvnvlolm6b5_350x200_1x-0.jpg',
     category: 'games',
     inStock: 45,
@@ -58,33 +44,14 @@ const productReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'LOAD_CATEGORY':
-      return {
-        categories: { ...state.categories, categoryList },
-        products: state.products,
-      };
+      return state;
 
     case 'SELECT_CATEGORY':
-      return {
-        categories: { ...state.categories, activeCategory: payload },
-        products: productList.filter((prod) => prod.category === payload),
-      };
+      return productList.filter((prod) => prod.category === payload);
 
     default:
       return state;
   }
-};
-
-export const loadCategory = () => {
-  return {
-    type: 'LOAD_CATEGORY',
-  };
-};
-
-export const handleCategory = (category) => {
-  return {
-    type: 'SELECT_CATEGORY',
-    payload: category,
-  };
 };
 
 export default productReducer;

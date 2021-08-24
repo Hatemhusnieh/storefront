@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { loadCategory, handleCategory } from '../store/products';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCategory, handleCategory } from '../store/actions';
 import { Paper, Tabs, Tab } from '@material-ui/core';
 import './category.scss';
 
-function Categories(props) {
+function Categories() {
+  const state = useSelector((state) => state);
+  const dispatcher = useDispatch();
   const [value, setValue] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
   useEffect(() => {
-    props.loadCategory();
+    dispatcher(loadCategory());
   }, []);
 
-  const CategoryPick = (props) => {
+  const CategoryPick = () => {
     return (
       <div className="category">
         <h2>{name}</h2>
@@ -41,12 +43,12 @@ function Categories(props) {
           onChange={handleChange}
           aria-label="disabled tabs example"
         >
-          {props.categories.categoryList.map((elm) => {
+          {state.categories.categoryList.map((elm) => {
             return (
               <Tab
                 label={elm.name}
                 onClick={() => {
-                  props.handleCategory(elm.name);
+                  dispatcher(handleCategory(elm.name));
                   handlePick(elm.name, elm.description);
                 }}
               />
@@ -59,8 +61,4 @@ function Categories(props) {
   );
 }
 
-const stateToProps = (state) => {
-  return state;
-};
-const dispatchToProps = { loadCategory, handleCategory };
-export default connect(stateToProps, dispatchToProps)(Categories);
+export default Categories;
