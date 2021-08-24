@@ -47,7 +47,7 @@ const productReducer = (state = initialState, action) => {
       return state;
 
     case 'SELECT_CATEGORY':
-      return productList.filter((prod) => prod.category === payload);
+      return payload.data.filter((prod) => prod.category === payload.category);
 
     default:
       return state;
