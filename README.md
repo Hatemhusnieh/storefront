@@ -37,3 +37,20 @@ The app will allow users to add items to a shopping cart.
 ## UML:
 
 ![uml](/res/Combined-Reducers.jpg)
+
+---
+
+## Phase 3 version(1.2.0)
+
+## About
+
+The app will allow users to add items to a shopping cart and delete from shopping cart, all this is through an API.
+
+## Links:
+
+- [Deployed](https://hate-store.netlify.app/)
+- [Pull Request]()
+
+## UML:
+
+![uml](/res/Asynchronous-Actions.jpg)
