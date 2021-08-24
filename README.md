@@ -32,7 +32,7 @@ The app will allow users to add items to a shopping cart.
 ## Links:
 
 - [Deployed](https://hate-store.netlify.app/)
-- [Pull Request]()
+- [Pull Request](https://github.com/Hatemhusnieh/storefront/pull/2)
 
 ## UML:
 
