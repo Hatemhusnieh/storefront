@@ -1,7 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { addToCart } from '../store/actions';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
+import { green } from '@material-ui/core/colors';
 import './products.scss';
 
 const useStyles = makeStyles({
@@ -13,12 +16,14 @@ const useStyles = makeStyles({
   },
 });
 
-function Products(props) {
+function Products() {
+  const state = useSelector((state) => state);
+  const dispatcher = useDispatch();
   const classes = useStyles();
 
   return (
     <div className="products">
-      {props.products.map((prod) => {
+      {state.products.map((prod) => {
         return (
           <div className="cards">
             <Card className={classes.root} key={prod.name}>
@@ -38,14 +43,15 @@ function Products(props) {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              {/* <CardActions>
-              <Button size="small" color="primary">
-              Share
-              </Button>
-              <Button size="small" color="primary">
+              <CardActions>
+                <Button size="small" color="primary" onClick={() => dispatcher(addToCart(prod))}>
+                  <AddShoppingCartOutlinedIcon style={{ color: green[500] }} />
+                  Add
+                </Button>
+                {/* <Button size="small" color="primary">
               Learn More
-              </Button>
-            </CardActions> */}
+              </Button> */}
+              </CardActions>
             </Card>
           </div>
         );
@@ -54,8 +60,4 @@ function Products(props) {
   );
 }
 
-const stateToProps = (state) => {
-  return state;
-};
-
-export default connect(stateToProps)(Products);
+export default Products;

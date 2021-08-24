@@ -20,3 +20,20 @@ The app will show static products when choosing a category. Categories are also 
 ## UML:
 
 ![uml](/res/Application-State-with-Redux.jpg)
+
+---
+
+## Phase 2 version(1.1.0)
+
+## About
+
+The app will allow users to add items to a shopping cart.
+
+## Links:
+
+- [Deployed](https://hate-store.netlify.app/)
+- [Pull Request]()
+
+## UML:
+
+![uml](/res/Combined-Reducers.jpg)
