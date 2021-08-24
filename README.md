@@ -49,7 +49,7 @@ The app will allow users to add items to a shopping cart and delete from shoppin
 ## Links:
 
 - [Deployed](https://hate-store.netlify.app/)
-- [Pull Request]()
+- [Pull Request](https://github.com/Hatemhusnieh/storefront/pull/3)
 
 ## UML:
 
