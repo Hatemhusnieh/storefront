@@ -66,7 +66,7 @@ App now has an order summary and billing form.
 ## Links:
 
 - [Deployed](https://hate-store.netlify.app/)
-- [Pull Request]()
+- [Pull Request](https://github.com/Hatemhusnieh/storefront/pull/4)
 
 ## UML:
 
