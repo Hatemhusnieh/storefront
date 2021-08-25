@@ -3,7 +3,8 @@ import Footer from './components/Footer';
 import Categories from './components/Categories';
 import Products from './components/Products';
 import SimpleCart from './components/SimpleCart';
-import Cart from './components/Cart';
+import Cart from './components/cart/Cart';
+import ProductDetails from './components/ProductDetails';
 import { If } from 'react-if';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -23,7 +24,12 @@ function App(props) {
           </If>
         </Route>
         <Route exact path="/cart">
+          <SimpleCart />
           <Cart />
+        </Route>
+        <Route exact path="/product">
+          <SimpleCart />
+          <ProductDetails />
         </Route>
       </Switch>
       <Footer />

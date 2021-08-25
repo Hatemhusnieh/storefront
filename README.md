@@ -54,3 +54,20 @@ The app will allow users to add items to a shopping cart and delete from shoppin
 ## UML:
 
 ![uml](/res/Asynchronous-Actions.jpg)
+
+---
+
+## Phase 4 version(1.3.0)
+
+## About
+
+App now has an order summary and billing form.
+
+## Links:
+
+- [Deployed](https://hate-store.netlify.app/)
+- [Pull Request]()
+
+## UML:
+
+![uml](/res/Asynchronous-Actions.jpg)
